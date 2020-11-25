@@ -42,6 +42,7 @@
     })
     .then(data => {
       experts = data?.items || [];
+      console.log(experts);
       return experts;
     })
     .catch(error => {
@@ -66,7 +67,7 @@
 </script>
 
 
-<h2>Expert Search</h2>
+<h3>Expertensuche</h3>
 <form action="">
   <input class="searchstring" placeholder="Suche"
     on:keyup={handleSearchstring}
@@ -96,6 +97,10 @@
         <img src="{expert.image?.download || ''}" alt="Portrait" />
       </div>
       <div class="fullname">{expert.first_name} {expert.last_name}</div>
+      {#if expert.telnr}
+        <div class="telephone">{expert.telnr}</div>
+      {/if}
+      <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
       <div class="competence">{expert.competence}</div>
       <div class="organisation">{expert.organisation}</div>
       <div class="region">{expert.region}</div>
@@ -107,9 +112,9 @@
 
 
 <style>
-  h2 {
+  h3 {
     text-transform: uppercase;
-    font-size: 4em;
+    font-size: 3em;
     font-weight: 100;
   }
   .searchstring,
@@ -143,7 +148,7 @@
   .card {
     width: 20rem;
     min-width: 10rem;
-    height: 12rem;
+    height: 10rem;
     background: white;
     margin: 0 1rem 1rem 0;
     padding: 1.5rem 1rem;
@@ -153,11 +158,16 @@
   .fullname {
     margin-bottom: 1em;
   }
+  .telephone,
+  .email,
   .competence,
   .organisation,
   .region {
     font-size: 90%;
     margin-bottom: .1em;
+  }
+  .email {
+    margin-bottom: .6em;
   }
   .portrait {
     float: right;
