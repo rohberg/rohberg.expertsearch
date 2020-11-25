@@ -834,7 +834,7 @@
     	return child_ctx;
     }
 
-    // (75:2) {#each menuregions as menuregion}
+    // (76:2) {#each menuregions as menuregion}
     function create_each_block_1(ctx) {
     	let input;
     	let input_value_value;
@@ -845,10 +845,10 @@
     		c: function create() {
     			input = element("input");
     			attr_dev(input, "type", "button");
-    			attr_dev(input, "class", "regionbutton svelte-14hoyc1");
+    			attr_dev(input, "class", "regionbutton svelte-1tro8ki");
     			input.value = input_value_value = /*menuregion*/ ctx[13];
     			toggle_class(input, "selected", /*region*/ ctx[1] === /*menuregion*/ ctx[13]);
-    			add_location(input, file, 75, 4, 1975);
+    			add_location(input, file, 76, 4, 2003);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -874,15 +874,15 @@
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(75:2) {#each menuregions as menuregion}",
+    		source: "(76:2) {#each menuregions as menuregion}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:26) {#if searchstring}
-    function create_if_block(ctx) {
+    // (85:26) {#if searchstring}
+    function create_if_block_1(ctx) {
     	let t0_value = " " + "";
     	let t0;
     	let t1;
@@ -911,16 +911,16 @@
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block_1.name,
     		type: "if",
-    		source: "(84:26) {#if searchstring}",
+    		source: "(85:26) {#if searchstring}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:2) {:else}
+    // (108:2) {:else}
     function create_else_block(ctx) {
     	let p;
 
@@ -928,7 +928,7 @@
     		c: function create() {
     			p = element("p");
     			p.textContent = "Keine Experten gefunden";
-    			add_location(p, file, 103, 4, 2915);
+    			add_location(p, file, 108, 4, 3114);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -942,16 +942,52 @@
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(103:2) {:else}",
+    		source: "(108:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:2) {#each experts as expert, i (expert['@id'])}
+    // (100:6) {#if expert.telnr}
+    function create_if_block(ctx) {
+    	let div;
+    	let t_value = /*expert*/ ctx[10].telnr + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t = text(t_value);
+    			attr_dev(div, "class", "telephone svelte-1tro8ki");
+    			add_location(div, file, 100, 8, 2787);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*experts*/ 4 && t_value !== (t_value = /*expert*/ ctx[10].telnr + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(100:6) {#if expert.telnr}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (94:2) {#each experts as expert, i (expert['@id'])}
     function create_each_block(key_1, ctx) {
-    	let div5;
+    	let div6;
     	let div0;
     	let img;
     	let img_src_value;
@@ -963,28 +999,36 @@
     	let t3_value = /*expert*/ ctx[10].last_name + "";
     	let t3;
     	let t4;
-    	let div2;
-    	let t5_value = /*expert*/ ctx[10].competence + "";
     	let t5;
+    	let div2;
+    	let a;
+    	let t6_value = /*expert*/ ctx[10].email + "";
     	let t6;
-    	let div3;
-    	let t7_value = /*expert*/ ctx[10].organisation + "";
+    	let a_href_value;
     	let t7;
+    	let div3;
+    	let t8_value = /*expert*/ ctx[10].competence + "";
     	let t8;
-    	let div4;
-    	let t9_value = /*expert*/ ctx[10].region + "";
     	let t9;
+    	let div4;
+    	let t10_value = /*expert*/ ctx[10].organisation + "";
     	let t10;
-    	let div5_transition;
+    	let t11;
+    	let div5;
+    	let t12_value = /*expert*/ ctx[10].region + "";
+    	let t12;
+    	let t13;
+    	let div6_transition;
     	let rect;
     	let stop_animation = noop;
     	let current;
+    	let if_block = /*expert*/ ctx[10].telnr && create_if_block(ctx);
 
     	const block = {
     		key: key_1,
     		first: null,
     		c: function create() {
-    			div5 = element("div");
+    			div6 = element("div");
     			div0 = element("div");
     			img = element("img");
     			t0 = space();
@@ -993,52 +1037,68 @@
     			t2 = space();
     			t3 = text(t3_value);
     			t4 = space();
+    			if (if_block) if_block.c();
+    			t5 = space();
     			div2 = element("div");
-    			t5 = text(t5_value);
-    			t6 = space();
+    			a = element("a");
+    			t6 = text(t6_value);
+    			t7 = space();
     			div3 = element("div");
-    			t7 = text(t7_value);
-    			t8 = space();
+    			t8 = text(t8_value);
+    			t9 = space();
     			div4 = element("div");
-    			t9 = text(t9_value);
-    			t10 = space();
+    			t10 = text(t10_value);
+    			t11 = space();
+    			div5 = element("div");
+    			t12 = text(t12_value);
+    			t13 = space();
     			if (img.src !== (img_src_value = /*expert*/ ctx[10].image?.download || "")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Portrait");
-    			attr_dev(img, "class", "svelte-14hoyc1");
-    			add_location(img, file, 95, 8, 2580);
-    			attr_dev(div0, "class", "portrait svelte-14hoyc1");
-    			add_location(div0, file, 94, 6, 2549);
-    			attr_dev(div1, "class", "fullname svelte-14hoyc1");
-    			add_location(div1, file, 97, 6, 2659);
-    			attr_dev(div2, "class", "competence svelte-14hoyc1");
-    			add_location(div2, file, 98, 6, 2732);
-    			attr_dev(div3, "class", "organisation svelte-14hoyc1");
-    			add_location(div3, file, 99, 6, 2788);
-    			attr_dev(div4, "class", "region svelte-14hoyc1");
-    			add_location(div4, file, 100, 6, 2848);
-    			attr_dev(div5, "class", "card svelte-14hoyc1");
-    			add_location(div5, file, 93, 4, 2474);
-    			this.first = div5;
+    			attr_dev(img, "class", "svelte-1tro8ki");
+    			add_location(img, file, 96, 8, 2608);
+    			attr_dev(div0, "class", "portrait svelte-1tro8ki");
+    			add_location(div0, file, 95, 6, 2577);
+    			attr_dev(div1, "class", "fullname svelte-1tro8ki");
+    			add_location(div1, file, 98, 6, 2687);
+    			attr_dev(a, "href", a_href_value = "mailto:" + /*expert*/ ctx[10].email);
+    			add_location(a, file, 102, 25, 2868);
+    			attr_dev(div2, "class", "email svelte-1tro8ki");
+    			add_location(div2, file, 102, 6, 2849);
+    			attr_dev(div3, "class", "competence svelte-1tro8ki");
+    			add_location(div3, file, 103, 6, 2931);
+    			attr_dev(div4, "class", "organisation svelte-1tro8ki");
+    			add_location(div4, file, 104, 6, 2987);
+    			attr_dev(div5, "class", "region svelte-1tro8ki");
+    			add_location(div5, file, 105, 6, 3047);
+    			attr_dev(div6, "class", "card svelte-1tro8ki");
+    			add_location(div6, file, 94, 4, 2502);
+    			this.first = div6;
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div5, anchor);
-    			append_dev(div5, div0);
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, div0);
     			append_dev(div0, img);
-    			append_dev(div5, t0);
-    			append_dev(div5, div1);
+    			append_dev(div6, t0);
+    			append_dev(div6, div1);
     			append_dev(div1, t1);
     			append_dev(div1, t2);
     			append_dev(div1, t3);
-    			append_dev(div5, t4);
-    			append_dev(div5, div2);
-    			append_dev(div2, t5);
-    			append_dev(div5, t6);
-    			append_dev(div5, div3);
-    			append_dev(div3, t7);
-    			append_dev(div5, t8);
-    			append_dev(div5, div4);
-    			append_dev(div4, t9);
-    			append_dev(div5, t10);
+    			append_dev(div6, t4);
+    			if (if_block) if_block.m(div6, null);
+    			append_dev(div6, t5);
+    			append_dev(div6, div2);
+    			append_dev(div2, a);
+    			append_dev(a, t6);
+    			append_dev(div6, t7);
+    			append_dev(div6, div3);
+    			append_dev(div3, t8);
+    			append_dev(div6, t9);
+    			append_dev(div6, div4);
+    			append_dev(div4, t10);
+    			append_dev(div6, t11);
+    			append_dev(div6, div5);
+    			append_dev(div5, t12);
+    			append_dev(div6, t13);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -1048,40 +1108,61 @@
 
     			if ((!current || dirty & /*experts*/ 4) && t1_value !== (t1_value = /*expert*/ ctx[10].first_name + "")) set_data_dev(t1, t1_value);
     			if ((!current || dirty & /*experts*/ 4) && t3_value !== (t3_value = /*expert*/ ctx[10].last_name + "")) set_data_dev(t3, t3_value);
-    			if ((!current || dirty & /*experts*/ 4) && t5_value !== (t5_value = /*expert*/ ctx[10].competence + "")) set_data_dev(t5, t5_value);
-    			if ((!current || dirty & /*experts*/ 4) && t7_value !== (t7_value = /*expert*/ ctx[10].organisation + "")) set_data_dev(t7, t7_value);
-    			if ((!current || dirty & /*experts*/ 4) && t9_value !== (t9_value = /*expert*/ ctx[10].region + "")) set_data_dev(t9, t9_value);
+
+    			if (/*expert*/ ctx[10].telnr) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					if_block.m(div6, t5);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if ((!current || dirty & /*experts*/ 4) && t6_value !== (t6_value = /*expert*/ ctx[10].email + "")) set_data_dev(t6, t6_value);
+
+    			if (!current || dirty & /*experts*/ 4 && a_href_value !== (a_href_value = "mailto:" + /*expert*/ ctx[10].email)) {
+    				attr_dev(a, "href", a_href_value);
+    			}
+
+    			if ((!current || dirty & /*experts*/ 4) && t8_value !== (t8_value = /*expert*/ ctx[10].competence + "")) set_data_dev(t8, t8_value);
+    			if ((!current || dirty & /*experts*/ 4) && t10_value !== (t10_value = /*expert*/ ctx[10].organisation + "")) set_data_dev(t10, t10_value);
+    			if ((!current || dirty & /*experts*/ 4) && t12_value !== (t12_value = /*expert*/ ctx[10].region + "")) set_data_dev(t12, t12_value);
     		},
     		r: function measure() {
-    			rect = div5.getBoundingClientRect();
+    			rect = div6.getBoundingClientRect();
     		},
     		f: function fix() {
-    			fix_position(div5);
+    			fix_position(div6);
     			stop_animation();
-    			add_transform(div5, rect);
+    			add_transform(div6, rect);
     		},
     		a: function animate() {
     			stop_animation();
-    			stop_animation = create_animation(div5, rect, flip, { duration: 300 });
+    			stop_animation = create_animation(div6, rect, flip, { duration: 300 });
     		},
     		i: function intro(local) {
     			if (current) return;
 
     			add_render_callback(() => {
-    				if (!div5_transition) div5_transition = create_bidirectional_transition(div5, scale, {}, true);
-    				div5_transition.run(1);
+    				if (!div6_transition) div6_transition = create_bidirectional_transition(div6, scale, {}, true);
+    				div6_transition.run(1);
     			});
 
     			current = true;
     		},
     		o: function outro(local) {
-    			if (!div5_transition) div5_transition = create_bidirectional_transition(div5, scale, {}, false);
-    			div5_transition.run(0);
+    			if (!div6_transition) div6_transition = create_bidirectional_transition(div6, scale, {}, false);
+    			div6_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div5);
-    			if (detaching && div5_transition) div5_transition.end();
+    			if (detaching) detach_dev(div6);
+    			if (if_block) if_block.d();
+    			if (detaching && div6_transition) div6_transition.end();
     		}
     	};
 
@@ -1089,7 +1170,7 @@
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(93:2) {#each experts as expert, i (expert['@id'])}",
+    		source: "(94:2) {#each experts as expert, i (expert['@id'])}",
     		ctx
     	});
 
@@ -1097,7 +1178,7 @@
     }
 
     function create_fragment(ctx) {
-    	let h2;
+    	let h3;
     	let t1;
     	let form;
     	let input;
@@ -1133,7 +1214,7 @@
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let if_block = /*searchstring*/ ctx[0] && create_if_block(ctx);
+    	let if_block = /*searchstring*/ ctx[0] && create_if_block_1(ctx);
     	let each_value = /*experts*/ ctx[2];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*expert*/ ctx[10]["@id"];
@@ -1153,8 +1234,8 @@
 
     	const block = {
     		c: function create() {
-    			h2 = element("h2");
-    			h2.textContent = "Expert Search";
+    			h3 = element("h3");
+    			h3.textContent = "Expertensuche";
     			t1 = space();
     			form = element("form");
     			input = element("input");
@@ -1192,29 +1273,29 @@
     				each1_else.c();
     			}
 
-    			attr_dev(h2, "class", "svelte-14hoyc1");
-    			add_location(h2, file, 68, 0, 1798);
-    			attr_dev(input, "class", "searchstring svelte-14hoyc1");
+    			attr_dev(h3, "class", "svelte-1tro8ki");
+    			add_location(h3, file, 69, 0, 1826);
+    			attr_dev(input, "class", "searchstring svelte-1tro8ki");
     			attr_dev(input, "placeholder", "Suche");
-    			add_location(input, file, 70, 2, 1840);
-    			add_location(br0, file, 73, 2, 1930);
+    			add_location(input, file, 71, 2, 1868);
+    			add_location(br0, file, 74, 2, 1958);
     			attr_dev(form, "action", "");
-    			add_location(form, file, 69, 0, 1821);
-    			add_location(i, file, 83, 17, 2186);
-    			attr_dev(p, "class", "debug svelte-14hoyc1");
-    			add_location(p, file, 83, 0, 2169);
-    			add_location(br1, file, 86, 30, 2313);
-    			add_location(br2, file, 87, 18, 2336);
-    			attr_dev(div0, "class", "debug svelte-14hoyc1");
-    			add_location(div0, file, 85, 0, 2263);
-    			attr_dev(div1, "class", "cards svelte-14hoyc1");
-    			add_location(div1, file, 91, 0, 2403);
+    			add_location(form, file, 70, 0, 1849);
+    			add_location(i, file, 84, 17, 2214);
+    			attr_dev(p, "class", "debug svelte-1tro8ki");
+    			add_location(p, file, 84, 0, 2197);
+    			add_location(br1, file, 87, 30, 2341);
+    			add_location(br2, file, 88, 18, 2364);
+    			attr_dev(div0, "class", "debug svelte-1tro8ki");
+    			add_location(div0, file, 86, 0, 2291);
+    			attr_dev(div1, "class", "cards svelte-1tro8ki");
+    			add_location(div1, file, 92, 0, 2431);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h2, anchor);
+    			insert_dev(target, h3, anchor);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, form, anchor);
     			append_dev(form, input);
@@ -1288,7 +1369,7 @@
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block(ctx);
+    					if_block = create_if_block_1(ctx);
     					if_block.c();
     					if_block.m(i, t6);
     				}
@@ -1340,7 +1421,7 @@
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h2);
+    			if (detaching) detach_dev(h3);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(form);
     			destroy_each(each_blocks_1, detaching);
@@ -1418,6 +1499,7 @@
     			return response.json();
     		}).then(data => {
     			$$invalidate(2, experts = data?.items || []);
+    			console.log(experts);
     			return experts;
     		}).catch(error => {
     			console.error("There has been a problem with your fetch operation:", error);
@@ -1502,27 +1584,21 @@
     }
 
     /* src/App.svelte generated by Svelte v3.29.7 */
-    const file$1 = "src/App.svelte";
 
     function create_fragment$1(ctx) {
-    	let main;
     	let expertsearch;
     	let current;
     	expertsearch = new ExpertSearch({ $$inline: true });
 
     	const block = {
     		c: function create() {
-    			main = element("main");
     			create_component(expertsearch.$$.fragment);
-    			attr_dev(main, "class", "svelte-14zoht4");
-    			add_location(main, file$1, 7, 0, 106);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, main, anchor);
-    			mount_component(expertsearch, main, null);
+    			mount_component(expertsearch, target, anchor);
     			current = true;
     		},
     		p: noop,
@@ -1536,8 +1612,7 @@
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(main);
-    			destroy_component(expertsearch);
+    			destroy_component(expertsearch, detaching);
     		}
     	};
 

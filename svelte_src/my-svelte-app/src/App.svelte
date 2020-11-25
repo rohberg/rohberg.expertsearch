@@ -5,9 +5,7 @@
 </script>
 
 
-<main>
-  <ExpertSearch />
-</main>
+<ExpertSearch />
 
 
 <style>
