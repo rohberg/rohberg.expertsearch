@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="rohberg.expertsearch">
+  <records prefix="plone.bundles/my_svelte_app"
+          interface='Products.CMFPlone.interfaces.IBundleRegistry'
+          remove="true">
+  </records>
+
+  <!-- <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" prefix="plone">
+    <value key="other_settings" purge="false">{"custom_elements": "my-svelte-app"}</value>
+  </records> -->
+
+</registry>

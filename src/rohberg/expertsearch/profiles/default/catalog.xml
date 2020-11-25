@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+  <!--<column value="my_meta_column"/>-->  
+  <index name="region" meta_type="FieldIndex">
+    <indexed_attr value="region"/>
+  </index> 
+  <index name="last_name" meta_type="FieldIndex">
+    <indexed_attr value="last_name"/>
+  </index>
+</object>

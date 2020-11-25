@@ -1,0 +1,14 @@
+{
+  "python.analysis.extraPaths": [
+    "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/parts/omelette",
+    "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/src"
+  ],
+  "python.autoComplete.extraPaths": [
+    "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/parts/omelette",
+    "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/src"
+  ],
+  "python.jediEnabled": false,
+  "python.languageServer": "Microsoft",
+  "python.pythonPath": "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/bin/python",
+  "vsintellicode.python.completionsEnabled": true
+}
