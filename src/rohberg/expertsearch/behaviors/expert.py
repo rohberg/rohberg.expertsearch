@@ -37,6 +37,11 @@ class IExpert(model.Schema):
         title=_(u'Organisation'),
         required=True,
     )
+    is_expert = schema.Bool(
+        title=_(u'Ist Experte. In Expertensuche aufnehmen.'),
+        default=True,
+        required=False,
+    )
 
 
 @implementer(IExpert)
