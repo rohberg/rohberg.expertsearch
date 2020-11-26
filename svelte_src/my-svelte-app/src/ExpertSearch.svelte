@@ -15,7 +15,7 @@
     'Winterthur',
   ]
   
-  let apiURL = process.env.isProd ? '/' : 'http://localhost:8080/Plone/';
+  let apiURL = __myapp.env.API_URL;
   apiURL = apiURL + '@search?portal_type=dexterity.membrane.member&fullobjects=1&sort_on=last_name&sort_order=ascending';
 
   let searchUrl = ''
@@ -57,6 +57,7 @@
   const handleClickRegion = (event) => {
     region = event.target.value;
     setSearchUrl(region, searchstring);
+    console.log("apiURL", apiURL);
     getExperts(searchUrl);
   }
   const handleSearchstring = (event) => {
@@ -146,9 +147,11 @@
     margin-top: 2rem;
   }
   .card {
-    width: 20rem;
-    min-width: 10rem;
-    height: 10rem;
+    /* width: 20rem;
+    min-width: 10rem;    
+    height: 10rem; */
+    width: 20em;
+    min-height: 10em;
     background: white;
     margin: 0 1rem 1rem 0;
     padding: 1.5rem 1rem;

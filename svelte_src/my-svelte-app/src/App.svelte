@@ -9,7 +9,7 @@
 
 
 <style>
-  main {
+  /* main {
     padding: 1em;
     max-width: 350px;
     margin: 0 auto;
@@ -18,5 +18,5 @@
     main {
       max-width: none;
     }
-  }
+  } */
 </style>

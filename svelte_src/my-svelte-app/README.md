@@ -60,4 +60,4 @@ rm scripts/setupTypeScript.js
 
 To use the app in Plone, you can add an HTML element with the id "my-svelte-app", for example with the TinyMCE editor in SourceCode mode:
 
-    <div id="my-svelte-app"></div>
+    <div class="my-svelte-app"></div>

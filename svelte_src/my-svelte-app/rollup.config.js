@@ -8,7 +8,6 @@ import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
-
 export default {
     input: 'src/main.js',
     output: {
@@ -61,9 +60,10 @@ export default {
         
         replace({
             // two level deep object should be stringified
-            process: JSON.stringify({
+            __myapp: JSON.stringify({
               env: {
-                isProd: production,
+                isProd: production,          
+                API_URL : process.env.API_URL
               }
             }),
           }),

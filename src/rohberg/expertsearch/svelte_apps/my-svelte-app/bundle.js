@@ -834,7 +834,7 @@
     	return child_ctx;
     }
 
-    // (76:2) {#each menuregions as menuregion}
+    // (77:2) {#each menuregions as menuregion}
     function create_each_block_1(ctx) {
     	let input;
     	let input_value_value;
@@ -845,10 +845,10 @@
     		c: function create() {
     			input = element("input");
     			attr_dev(input, "type", "button");
-    			attr_dev(input, "class", "regionbutton svelte-1tro8ki");
+    			attr_dev(input, "class", "regionbutton svelte-11mqbb5");
     			input.value = input_value_value = /*menuregion*/ ctx[13];
     			toggle_class(input, "selected", /*region*/ ctx[1] === /*menuregion*/ ctx[13]);
-    			add_location(input, file, 76, 4, 2003);
+    			add_location(input, file, 77, 4, 2000);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -874,14 +874,14 @@
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(76:2) {#each menuregions as menuregion}",
+    		source: "(77:2) {#each menuregions as menuregion}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:26) {#if searchstring}
+    // (86:26) {#if searchstring}
     function create_if_block_1(ctx) {
     	let t0_value = " " + "";
     	let t0;
@@ -913,14 +913,14 @@
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(85:26) {#if searchstring}",
+    		source: "(86:26) {#if searchstring}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:2) {:else}
+    // (109:2) {:else}
     function create_else_block(ctx) {
     	let p;
 
@@ -928,7 +928,7 @@
     		c: function create() {
     			p = element("p");
     			p.textContent = "Keine Experten gefunden";
-    			add_location(p, file, 108, 4, 3114);
+    			add_location(p, file, 109, 4, 3111);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -942,14 +942,14 @@
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(108:2) {:else}",
+    		source: "(109:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:6) {#if expert.telnr}
+    // (101:6) {#if expert.telnr}
     function create_if_block(ctx) {
     	let div;
     	let t_value = /*expert*/ ctx[10].telnr + "";
@@ -959,8 +959,8 @@
     		c: function create() {
     			div = element("div");
     			t = text(t_value);
-    			attr_dev(div, "class", "telephone svelte-1tro8ki");
-    			add_location(div, file, 100, 8, 2787);
+    			attr_dev(div, "class", "telephone svelte-11mqbb5");
+    			add_location(div, file, 101, 8, 2784);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -978,14 +978,14 @@
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(100:6) {#if expert.telnr}",
+    		source: "(101:6) {#if expert.telnr}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (94:2) {#each experts as expert, i (expert['@id'])}
+    // (95:2) {#each experts as expert, i (expert['@id'])}
     function create_each_block(key_1, ctx) {
     	let div6;
     	let div0;
@@ -1054,24 +1054,24 @@
     			t13 = space();
     			if (img.src !== (img_src_value = /*expert*/ ctx[10].image?.download || "")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Portrait");
-    			attr_dev(img, "class", "svelte-1tro8ki");
-    			add_location(img, file, 96, 8, 2608);
-    			attr_dev(div0, "class", "portrait svelte-1tro8ki");
-    			add_location(div0, file, 95, 6, 2577);
-    			attr_dev(div1, "class", "fullname svelte-1tro8ki");
-    			add_location(div1, file, 98, 6, 2687);
+    			attr_dev(img, "class", "svelte-11mqbb5");
+    			add_location(img, file, 97, 8, 2605);
+    			attr_dev(div0, "class", "portrait svelte-11mqbb5");
+    			add_location(div0, file, 96, 6, 2574);
+    			attr_dev(div1, "class", "fullname svelte-11mqbb5");
+    			add_location(div1, file, 99, 6, 2684);
     			attr_dev(a, "href", a_href_value = "mailto:" + /*expert*/ ctx[10].email);
-    			add_location(a, file, 102, 25, 2868);
-    			attr_dev(div2, "class", "email svelte-1tro8ki");
-    			add_location(div2, file, 102, 6, 2849);
-    			attr_dev(div3, "class", "competence svelte-1tro8ki");
-    			add_location(div3, file, 103, 6, 2931);
-    			attr_dev(div4, "class", "organisation svelte-1tro8ki");
-    			add_location(div4, file, 104, 6, 2987);
-    			attr_dev(div5, "class", "region svelte-1tro8ki");
-    			add_location(div5, file, 105, 6, 3047);
-    			attr_dev(div6, "class", "card svelte-1tro8ki");
-    			add_location(div6, file, 94, 4, 2502);
+    			add_location(a, file, 103, 25, 2865);
+    			attr_dev(div2, "class", "email svelte-11mqbb5");
+    			add_location(div2, file, 103, 6, 2846);
+    			attr_dev(div3, "class", "competence svelte-11mqbb5");
+    			add_location(div3, file, 104, 6, 2928);
+    			attr_dev(div4, "class", "organisation svelte-11mqbb5");
+    			add_location(div4, file, 105, 6, 2984);
+    			attr_dev(div5, "class", "region svelte-11mqbb5");
+    			add_location(div5, file, 106, 6, 3044);
+    			attr_dev(div6, "class", "card svelte-11mqbb5");
+    			add_location(div6, file, 95, 4, 2499);
     			this.first = div6;
     		},
     		m: function mount(target, anchor) {
@@ -1170,7 +1170,7 @@
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(94:2) {#each experts as expert, i (expert['@id'])}",
+    		source: "(95:2) {#each experts as expert, i (expert['@id'])}",
     		ctx
     	});
 
@@ -1273,23 +1273,23 @@
     				each1_else.c();
     			}
 
-    			attr_dev(h3, "class", "svelte-1tro8ki");
-    			add_location(h3, file, 69, 0, 1826);
-    			attr_dev(input, "class", "searchstring svelte-1tro8ki");
+    			attr_dev(h3, "class", "svelte-11mqbb5");
+    			add_location(h3, file, 70, 0, 1823);
+    			attr_dev(input, "class", "searchstring svelte-11mqbb5");
     			attr_dev(input, "placeholder", "Suche");
-    			add_location(input, file, 71, 2, 1868);
-    			add_location(br0, file, 74, 2, 1958);
+    			add_location(input, file, 72, 2, 1865);
+    			add_location(br0, file, 75, 2, 1955);
     			attr_dev(form, "action", "");
-    			add_location(form, file, 70, 0, 1849);
-    			add_location(i, file, 84, 17, 2214);
-    			attr_dev(p, "class", "debug svelte-1tro8ki");
-    			add_location(p, file, 84, 0, 2197);
-    			add_location(br1, file, 87, 30, 2341);
-    			add_location(br2, file, 88, 18, 2364);
-    			attr_dev(div0, "class", "debug svelte-1tro8ki");
-    			add_location(div0, file, 86, 0, 2291);
-    			attr_dev(div1, "class", "cards svelte-1tro8ki");
-    			add_location(div1, file, 92, 0, 2431);
+    			add_location(form, file, 71, 0, 1846);
+    			add_location(i, file, 85, 17, 2211);
+    			attr_dev(p, "class", "debug svelte-11mqbb5");
+    			add_location(p, file, 85, 0, 2194);
+    			add_location(br1, file, 88, 30, 2338);
+    			add_location(br2, file, 89, 18, 2361);
+    			attr_dev(div0, "class", "debug svelte-11mqbb5");
+    			add_location(div0, file, 87, 0, 2288);
+    			attr_dev(div1, "class", "cards svelte-11mqbb5");
+    			add_location(div1, file, 93, 0, 2428);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1470,8 +1470,7 @@
     		"Winterthur"
     	];
 
-    	let apiURL =  "http://localhost:8080/Plone/";
-
+    	let apiURL = {"env":{"isProd":false,"API_URL":"http://localhost:8080/Plone/"}}.env.API_URL;
     	apiURL = apiURL + "@search?portal_type=dexterity.membrane.member&fullobjects=1&sort_on=last_name&sort_order=ascending";
     	let searchUrl = "";
     	let experts = [];
@@ -1515,6 +1514,7 @@
     	const handleClickRegion = event => {
     		$$invalidate(1, region = event.target.value);
     		setSearchUrl(region, searchstring);
+    		console.log("apiURL", apiURL);
     		getExperts(searchUrl);
     	};
 
