@@ -63,7 +63,8 @@ export default {
             __myapp: JSON.stringify({
               env: {
                 isProd: production,          
-                API_URL : process.env.API_URL
+                API_URL: process.env.API_URL,
+                PORTAL_TYPE: process.env.PORTAL_TYPE
               }
             }),
           }),

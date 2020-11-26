@@ -2,8 +2,8 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c --environment API_URL:http://localhost:8080/foo/",
-    "dev": "rollup -c -w",
+    "build": "rollup -c --environment API_URL:http://localhost:8080/Plone/,PORTAL_TYPE:dexterity.membrane.member",
+    "dev": "rollup -c -w --environment API_URL:http://localhost:8080/Plone/,PORTAL_TYPE:dexterity.membrane.member",
     "start": "sirv public"
   },
   "devDependencies": {

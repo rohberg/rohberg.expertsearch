@@ -16,7 +16,7 @@
   ]
   
   let apiURL = __myapp.env.API_URL;
-  apiURL = apiURL + '@search?portal_type=dexterity.membrane.member&fullobjects=1&sort_on=last_name&sort_order=ascending';
+  apiURL = apiURL + '@search?portal_type=__myapp.env.PORTAL_TYPE&fullobjects=1&sort_on=last_name&sort_order=ascending';
 
   let searchUrl = ''
   let experts = [];
