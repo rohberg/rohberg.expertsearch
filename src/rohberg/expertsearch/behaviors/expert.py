@@ -3,9 +3,11 @@
 from collective import dexteritytextindexer
 from rohberg.expertsearch import _
 from plone import schema
+from plone.autoform.directives import widget
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
+from z3c.form.browser.radio import RadioFieldWidget
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
@@ -37,6 +39,7 @@ class IExpert(model.Schema):
         title=_(u'Organisation'),
         required=True,
     )
+    widget(is_expert=RadioFieldWidget)
     is_expert = schema.Bool(
         title=_(u'Ist Experte. In Expertensuche aufnehmen.'),
         default=True,
@@ -79,3 +82,13 @@ class Expert(object):
     @organisation.setter
     def organisation(self, value):
         self.context.organisation = value
+
+    @property
+    def is_expert(self):
+        if safe_hasattr(self.context, 'is_expert'):
+            return self.context.is_expert
+        return None
+
+    @is_expert.setter
+    def is_expert(self, value):
+        self.context.is_expert = value

@@ -1,2 +1,1684 @@
-!function(){"use strict";function t(){}const e=t=>t;function n(t){return t()}function o(){return Object.create(null)}function r(t){t.forEach(n)}function l(t){return"function"==typeof t}function s(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}const c="undefined"!=typeof window;let i=c?()=>window.performance.now():()=>Date.now(),a=c?t=>requestAnimationFrame(t):t;const u=new Set;function f(t){u.forEach((e=>{e.c(t)||(u.delete(e),e.f())})),0!==u.size&&a(f)}function d(t){let e;return 0===u.size&&a(f),{promise:new Promise((n=>{u.add(e={c:t,f:n})})),abort(){u.delete(e)}}}function h(t,e){t.appendChild(e)}function p(t,e,n){t.insertBefore(e,n||null)}function m(t){t.parentNode.removeChild(t)}function g(t){return document.createElement(t)}function $(t){return document.createTextNode(t)}function y(){return $(" ")}function v(t,e,n,o){return t.addEventListener(e,n,o),()=>t.removeEventListener(e,n,o)}function b(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}function _(t,e){e=""+e,t.wholeText!==e&&(t.data=e)}function w(t,e,n){t.classList[n?"add":"remove"](e)}const x=new Set;let k,E=0;function C(t,e,n,o,r,l,s,c=0){const i=16.666/o;let a="{\n";for(let t=0;t<=1;t+=i){const o=e+(n-e)*l(t);a+=100*t+`%{${s(o,1-o)}}\n`}const u=a+`100% {${s(n,1-n)}}\n}`,f=`__svelte_${function(t){let e=5381,n=t.length;for(;n--;)e=(e<<5)-e^t.charCodeAt(n);return e>>>0}(u)}_${c}`,d=t.ownerDocument;x.add(d);const h=d.__svelte_stylesheet||(d.__svelte_stylesheet=d.head.appendChild(g("style")).sheet),p=d.__svelte_rules||(d.__svelte_rules={});p[f]||(p[f]=!0,h.insertRule(`@keyframes ${f} ${u}`,h.cssRules.length));const m=t.style.animation||"";return t.style.animation=`${m?`${m}, `:""}${f} ${o}ms linear ${r}ms 1 both`,E+=1,f}function R(t,e){const n=(t.style.animation||"").split(", "),o=n.filter(e?t=>t.indexOf(e)<0:t=>-1===t.indexOf("__svelte")),r=n.length-o.length;r&&(t.style.animation=o.join(", "),E-=r,E||a((()=>{E||(x.forEach((t=>{const e=t.__svelte_stylesheet;let n=e.cssRules.length;for(;n--;)e.deleteRule(n);t.__svelte_rules={}})),x.clear())})))}function S(t,e){const n=t.getBoundingClientRect();if(e.left!==n.left||e.top!==n.top){const o=getComputedStyle(t),r="none"===o.transform?"":o.transform;t.style.transform=`${r} translate(${e.left-n.left}px, ${e.top-n.top}px)`}}function A(t){k=t}function j(t){(function(){if(!k)throw new Error("Function called outside component initialization");return k})().$$.on_mount.push(t)}const M=[],B=[],O=[],T=[],N=Promise.resolve();let P=!1;function q(t){O.push(t)}let L=!1;const z=new Set;function D(){if(!L){L=!0;do{for(let t=0;t<M.length;t+=1){const e=M[t];A(e),U(e.$$)}for(A(null),M.length=0;B.length;)B.pop()();for(let t=0;t<O.length;t+=1){const e=O[t];z.has(e)||(z.add(e),e())}O.length=0}while(M.length);for(;T.length;)T.pop()();P=!1,L=!1,z.clear()}}function U(t){if(null!==t.fragment){t.update(),r(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(q)}}let Z;function F(t,e,n){t.dispatchEvent(function(t,e){const n=document.createEvent("CustomEvent");return n.initCustomEvent(t,!1,!1,e),n}(`${e?"intro":"outro"}${n}`))}const W=new Set;let G;function H(t,e){t&&t.i&&(W.delete(t),t.i(e))}function I(t,e,n,o){if(t&&t.o){if(W.has(t))return;W.add(t),G.c.push((()=>{W.delete(t),o&&(n&&t.d(1),o())})),t.o(e)}}const K={duration:0};function J(n,o,s,c){let a=o(n,s),u=c?0:1,f=null,h=null,p=null;function m(){p&&R(n,p)}function g(t,e){const n=t.b-u;return e*=Math.abs(n),{a:u,b:t.b,d:n,duration:e,start:t.start,end:t.start+e,group:t.group}}function $(o){const{delay:l=0,duration:s=300,easing:c=e,tick:$=t,css:y}=a||K,v={start:i()+l,b:o};o||(v.group=G,G.r+=1),f||h?h=v:(y&&(m(),p=C(n,u,o,s,l,c,y)),o&&$(0,1),f=g(v,s),q((()=>F(n,o,"start"))),d((t=>{if(h&&t>h.start&&(f=g(h,s),h=null,F(n,f.b,"start"),y&&(m(),p=C(n,u,f.b,f.duration,0,c,a.css))),f)if(t>=f.end)$(u=f.b,1-u),F(n,f.b,"end"),h||(f.b?m():--f.group.r||r(f.group.c)),f=null;else if(t>=f.start){const e=t-f.start;u=f.a+f.d*c(e/f.duration),$(u,1-u)}return!(!f&&!h)})))}return{run(t){l(a)?(Z||(Z=Promise.resolve(),Z.then((()=>{Z=null}))),Z).then((()=>{a=a(),$(t)})):$(t)},end(){m(),f=h=null}}}function Q(t,e){t.f(),function(t,e){I(t,1,1,(()=>{e.delete(t.key)}))}(t,e)}function V(t,e,o){const{fragment:s,on_mount:c,on_destroy:i,after_update:a}=t.$$;s&&s.m(e,o),q((()=>{const e=c.map(n).filter(l);i?i.push(...e):r(e),t.$$.on_mount=[]})),a.forEach(q)}function X(t,e){const n=t.$$;null!==n.fragment&&(r(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function Y(t,e){-1===t.$$.dirty[0]&&(M.push(t),P||(P=!0,N.then(D)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function tt(e,n,l,s,c,i,a=[-1]){const u=k;A(e);const f=n.props||{},d=e.$$={fragment:null,ctx:null,props:i,update:t,not_equal:c,bound:o(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:o(),dirty:a,skip_bound:!1};let h=!1;if(d.ctx=l?l(e,f,((t,n,...o)=>{const r=o.length?o[0]:n;return d.ctx&&c(d.ctx[t],d.ctx[t]=r)&&(!d.skip_bound&&d.bound[t]&&d.bound[t](r),h&&Y(e,t)),n})):[],d.update(),h=!0,r(d.before_update),d.fragment=!!s&&s(d.ctx),n.target){if(n.hydrate){const t=function(t){return Array.from(t.childNodes)}(n.target);d.fragment&&d.fragment.l(t),t.forEach(m)}else d.fragment&&d.fragment.c();n.intro&&H(e.$$.fragment),V(e,n.target,n.anchor),D()}A(u)}class et{$destroy(){X(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}function nt(t){const e=t-1;return e*e*e+1}function ot(t,{delay:e=0,duration:n=400,easing:o=nt,start:r=0,opacity:l=0}){const s=getComputedStyle(t),c=+s.opacity,i="none"===s.transform?"":s.transform,a=1-r,u=c*(1-l);return{delay:e,duration:n,easing:o,css:(t,e)=>`\n\t\t\ttransform: ${i} scale(${1-a*e});\n\t\t\topacity: ${c-u*e}\n\t\t`}}function rt(t,e,n){const o=getComputedStyle(t),r="none"===o.transform?"":o.transform,s=e.from.width/t.clientWidth,c=e.from.height/t.clientHeight,i=(e.from.left-e.to.left)/s,a=(e.from.top-e.to.top)/c,u=Math.sqrt(i*i+a*a),{delay:f=0,duration:d=(t=>120*Math.sqrt(t)),easing:h=nt}=n;return{delay:f,duration:l(d)?d(u):d,easing:h,css:(t,e)=>`transform: ${r} translate(${e*i}px, ${e*a}px);`}}function lt(t,e,n){const o=t.slice();return o[10]=e[n],o[12]=n,o}function st(t,e,n){const o=t.slice();return o[13]=e[n],o}function ct(t){let e,n,o,r;return{c(){e=g("input"),b(e,"type","button"),b(e,"class","regionbutton svelte-1ci4loc"),e.value=n=t[13],w(e,"selected",t[1]===t[13])},m(n,l){var s;p(n,e,l),o||(r=v(e,"click",(s=t[4],function(t){return t.preventDefault(),s.call(this,t)})),o=!0)},p(t,n){10&n&&w(e,"selected",t[1]===t[13])},d(t){t&&m(e),o=!1,r()}}}function it(t){let e,n,o;return{c(){e=$(" "),n=$("for "),o=$(t[0])},m(t,r){p(t,e,r),p(t,n,r),p(t,o,r)},p(t,e){1&e&&_(o,t[0])},d(t){t&&m(e),t&&m(n),t&&m(o)}}}function at(t){let e;return{c(){e=g("p"),e.textContent="Keine Experten gefunden"},m(t,n){p(t,e,n)},d(t){t&&m(e)}}}function ut(t){let e,n,o=t[10].telnr+"";return{c(){e=g("div"),n=$(o),b(e,"class","telephone svelte-1ci4loc")},m(t,o){p(t,e,o),h(e,n)},p(t,e){4&e&&o!==(o=t[10].telnr+"")&&_(n,o)},d(t){t&&m(e)}}}function ft(n,o){let r,l,s,c,a,u,f,v,w,x,k,E,A,j,M,B,O,T,N,P,L,z,D,U,Z,F,W,G,H=o[10].first_name+"",I=o[10].last_name+"",K=o[10].email+"",Q=o[10].competence+"",V=o[10].organisation+"",X=o[10].region+"",Y=t,tt=o[10].telnr&&ut(o);return{key:n,first:null,c(){r=g("div"),l=g("div"),s=g("img"),a=y(),u=g("div"),f=$(H),v=y(),w=$(I),x=y(),tt&&tt.c(),k=y(),E=g("div"),A=g("a"),j=$(K),B=y(),O=g("div"),T=$(Q),N=y(),P=g("div"),L=$(V),z=y(),D=g("div"),U=$(X),Z=y(),s.src!==(c=o[10].image?.download||"")&&b(s,"src",c),b(s,"alt","Portrait"),b(s,"class","svelte-1ci4loc"),b(l,"class","portrait svelte-1ci4loc"),b(u,"class","fullname svelte-1ci4loc"),b(A,"href",M="mailto:"+o[10].email),b(E,"class","email svelte-1ci4loc"),b(O,"class","competence svelte-1ci4loc"),b(P,"class","organisation svelte-1ci4loc"),b(D,"class","region svelte-1ci4loc"),b(r,"class","card svelte-1ci4loc"),this.first=r},m(t,e){p(t,r,e),h(r,l),h(l,s),h(r,a),h(r,u),h(u,f),h(u,v),h(u,w),h(r,x),tt&&tt.m(r,null),h(r,k),h(r,E),h(E,A),h(A,j),h(r,B),h(r,O),h(O,T),h(r,N),h(r,P),h(P,L),h(r,z),h(r,D),h(D,U),h(r,Z),G=!0},p(t,e){(!G||4&e&&s.src!==(c=t[10].image?.download||""))&&b(s,"src",c),(!G||4&e)&&H!==(H=t[10].first_name+"")&&_(f,H),(!G||4&e)&&I!==(I=t[10].last_name+"")&&_(w,I),t[10].telnr?tt?tt.p(t,e):(tt=ut(t),tt.c(),tt.m(r,k)):tt&&(tt.d(1),tt=null),(!G||4&e)&&K!==(K=t[10].email+"")&&_(j,K),(!G||4&e&&M!==(M="mailto:"+t[10].email))&&b(A,"href",M),(!G||4&e)&&Q!==(Q=t[10].competence+"")&&_(T,Q),(!G||4&e)&&V!==(V=t[10].organisation+"")&&_(L,V),(!G||4&e)&&X!==(X=t[10].region+"")&&_(U,X)},r(){W=r.getBoundingClientRect()},f(){!function(t){const e=getComputedStyle(t);if("absolute"!==e.position&&"fixed"!==e.position){const{width:n,height:o}=e,r=t.getBoundingClientRect();t.style.position="absolute",t.style.width=n,t.style.height=o,S(t,r)}}(r),Y(),S(r,W)},a(){Y(),Y=function(n,o,r,l){if(!o)return t;const s=n.getBoundingClientRect();if(o.left===s.left&&o.right===s.right&&o.top===s.top&&o.bottom===s.bottom)return t;const{delay:c=0,duration:a=300,easing:u=e,start:f=i()+c,end:h=f+a,tick:p=t,css:m}=r(n,{from:o,to:s},l);let g,$=!0,y=!1;function v(){m&&R(n,g),$=!1}return d((t=>{if(!y&&t>=f&&(y=!0),y&&t>=h&&(p(1,0),v()),!$)return!1;if(y){const e=0+1*u((t-f)/a);p(e,1-e)}return!0})),m&&(g=C(n,0,1,a,c,u,m)),c||(y=!0),p(0,1),v}(r,W,rt,{duration:300})},i(t){G||(q((()=>{F||(F=J(r,ot,{},!0)),F.run(1)})),G=!0)},o(t){F||(F=J(r,ot,{},!1)),F.run(0),G=!1},d(t){t&&m(r),tt&&tt.d(),t&&F&&F.end()}}}function dt(t){let e,n,o,l,s,c,i,a,u,f,d,w,x,k,E,C,R,S,A,j,M,B,O,T,N,P,q=[],L=new Map,z=t[3],D=[];for(let e=0;e<z.length;e+=1)D[e]=ct(st(t,z,e));let U=t[0]&&it(t),Z=t[2];const F=t=>t[10]["@id"];for(let e=0;e<Z.length;e+=1){let n=lt(t,Z,e),o=F(n);L.set(o,q[e]=ft(o,n))}let W=null;return Z.length||(W=at()),{c(){e=g("h3"),e.textContent="Expertensuche",n=y(),o=g("form"),l=g("input"),s=y(),c=g("br"),i=y();for(let t=0;t<D.length;t+=1)D[t].c();a=y(),u=g("p"),f=g("i"),d=$("Search"),U&&U.c(),w=$(" in "),x=$(t[1]),k=y(),E=g("div"),C=$("searchstring: "),R=$(t[0]),S=g("br"),A=$("\n  region: "),j=$(t[1]),M=g("br"),B=y(),O=g("div");for(let t=0;t<q.length;t+=1)q[t].c();W&&W.c(),b(e,"class","svelte-1ci4loc"),b(l,"class","searchstring svelte-1ci4loc"),b(l,"placeholder","Suche"),b(o,"action",""),b(u,"class","debug svelte-1ci4loc"),b(E,"class","debug svelte-1ci4loc"),b(O,"class","cards svelte-1ci4loc")},m(r,m){p(r,e,m),p(r,n,m),p(r,o,m),h(o,l),h(o,s),h(o,c),h(o,i);for(let t=0;t<D.length;t+=1)D[t].m(o,null);p(r,a,m),p(r,u,m),h(u,f),h(f,d),U&&U.m(f,null),h(f,w),h(f,x),p(r,k,m),p(r,E,m),h(E,C),h(E,R),h(E,S),h(E,A),h(E,j),h(E,M),p(r,B,m),p(r,O,m);for(let t=0;t<q.length;t+=1)q[t].m(O,null);W&&W.m(O,null),T=!0,N||(P=v(l,"keyup",t[5]),N=!0)},p(t,[e]){if(26&e){let n;for(z=t[3],n=0;n<z.length;n+=1){const r=st(t,z,n);D[n]?D[n].p(r,e):(D[n]=ct(r),D[n].c(),D[n].m(o,null))}for(;n<D.length;n+=1)D[n].d(1);D.length=z.length}if(t[0]?U?U.p(t,e):(U=it(t),U.c(),U.m(f,w)):U&&(U.d(1),U=null),(!T||2&e)&&_(x,t[1]),(!T||1&e)&&_(R,t[0]),(!T||2&e)&&_(j,t[1]),4&e){const n=t[2];G={r:0,c:[],p:G};for(let t=0;t<q.length;t+=1)q[t].r();q=function(t,e,n,o,r,l,s,c,i,a,u,f){let d=t.length,h=l.length,p=d;const m={};for(;p--;)m[t[p].key]=p;const g=[],$=new Map,y=new Map;for(p=h;p--;){const t=f(r,l,p),c=n(t);let i=s.get(c);i?o&&i.p(t,e):(i=a(c,t),i.c()),$.set(c,g[p]=i),c in m&&y.set(c,Math.abs(p-m[c]))}const v=new Set,b=new Set;function _(t){H(t,1),t.m(c,u),s.set(t.key,t),u=t.first,h--}for(;d&&h;){const e=g[h-1],n=t[d-1],o=e.key,r=n.key;e===n?(u=e.first,d--,h--):$.has(r)?!s.has(o)||v.has(o)?_(e):b.has(r)?d--:y.get(o)>y.get(r)?(b.add(o),_(e)):(v.add(r),d--):(i(n,s),d--)}for(;d--;){const e=t[d];$.has(e.key)||i(e,s)}for(;h;)_(g[h-1]);return g}(q,e,F,1,t,n,L,O,Q,ft,null,lt);for(let t=0;t<q.length;t+=1)q[t].a();G.r||r(G.c),G=G.p,n.length?W&&(W.d(1),W=null):W||(W=at(),W.c(),W.m(O,null))}},i(t){if(!T){for(let t=0;t<Z.length;t+=1)H(q[t]);T=!0}},o(t){for(let t=0;t<q.length;t+=1)I(q[t]);T=!1},d(t){t&&m(e),t&&m(n),t&&m(o),function(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}(D,t),t&&m(a),t&&m(u),U&&U.d(),t&&m(k),t&&m(E),t&&m(B),t&&m(O);for(let t=0;t<q.length;t+=1)q[t].d();W&&W.d(),N=!1,P()}}}function ht(t,e,n){let o="",r="Alle Regionen",l="http://localhost:8080/Plone/";l+="@search?portal_type=dexterity.membrane.member&fullobjects=1&sort_on=last_name&sort_order=ascending";let s="",c=[];function i(t="Alle Regionen",e=""){s=("Alle Regionen"==t?l:l+"&region="+encodeURI(t))+(e?"&SearchableText="+e:"")}async function a(t=l){fetch(t,{method:"GET",headers:{"Content-Type":"application/json",Accept:"application/json"}}).then((t=>{if(!t.ok)throw new Error("Network response was not ok");return t.json()})).then((t=>(n(2,c=t?.items||[]),console.log(c),c))).catch((t=>{console.error("There has been a problem with your fetch operation:",t)}))}j((()=>{a()}));return[o,r,c,["Alle Regionen","Zürich Stadt","Zürich Oberland","Zürich Unterland","Albis","Winterthur"],t=>{n(1,r=t.target.value),i(r,o),console.log("apiURL",l),a(s)},t=>{n(0,o=t.target.value+(t.target.value?"*":"")),i(r,o),a(s)}]}class pt extends et{constructor(t){super(),tt(this,t,ht,dt,s,{})}}function mt(e){let n,o;return n=new pt({}),{c(){var t;(t=n.$$.fragment)&&t.c()},m(t,e){V(n,t,e),o=!0},p:t,i(t){o||(H(n.$$.fragment,t),o=!0)},o(t){I(n.$$.fragment,t),o=!1},d(t){X(n,t)}}}class gt extends et{constructor(t){super(),tt(this,t,null,mt,s,{})}}let $t=document.getElementsByClassName("my-svelte-app");for(let t=0;t<$t.length;t++){new gt({target:$t[t],props:{}})}}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+(function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function prevent_default(fn) {
+        return function (event) {
+            event.preventDefault();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = node.ownerDocument;
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = doc.head.appendChild(element('style')).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
+    }
+
+    function create_animation(node, from, fn, params) {
+        if (!from)
+            return noop;
+        const to = node.getBoundingClientRect();
+        if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
+            return noop;
+        const { delay = 0, duration = 300, easing = identity, 
+        // @ts-ignore todo: should this be separated from destructuring? Or start/end added to public api and documentation?
+        start: start_time = now() + delay, 
+        // @ts-ignore todo:
+        end = start_time + duration, tick = noop, css } = fn(node, { from, to }, params);
+        let running = true;
+        let started = false;
+        let name;
+        function start() {
+            if (css) {
+                name = create_rule(node, 0, 1, duration, delay, easing, css);
+            }
+            if (!delay) {
+                started = true;
+            }
+        }
+        function stop() {
+            if (css)
+                delete_rule(node, name);
+            running = false;
+        }
+        loop(now => {
+            if (!started && now >= start_time) {
+                started = true;
+            }
+            if (started && now >= end) {
+                tick(1, 0);
+                stop();
+            }
+            if (!running) {
+                return false;
+            }
+            if (started) {
+                const p = now - start_time;
+                const t = 0 + 1 * easing(p / duration);
+                tick(t, 1 - t);
+            }
+            return true;
+        });
+        start();
+        tick(0, 1);
+        return stop;
+    }
+    function fix_position(node) {
+        const style = getComputedStyle(node);
+        if (style.position !== 'absolute' && style.position !== 'fixed') {
+            const { width, height } = style;
+            const a = node.getBoundingClientRect();
+            node.style.position = 'absolute';
+            node.style.width = width;
+            node.style.height = height;
+            add_transform(node, a);
+        }
+    }
+    function add_transform(node, a) {
+        const b = node.getBoundingClientRect();
+        if (a.left !== b.left || a.top !== b.top) {
+            const style = getComputedStyle(node);
+            const transform = style.transform === 'none' ? '' : style.transform;
+            node.style.transform = `${transform} translate(${a.left - b.left}px, ${a.top - b.top}px)`;
+        }
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    let flushing = false;
+    const seen_callbacks = new Set();
+    function flush() {
+        if (flushing)
+            return;
+        flushing = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components.length; i += 1) {
+                const component = dirty_components[i];
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        flushing = false;
+        seen_callbacks.clear();
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = program.b - t;
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+    function outro_and_destroy_block(block, lookup) {
+        transition_out(block, 1, 1, () => {
+            lookup.delete(block.key);
+        });
+    }
+    function fix_and_outro_and_destroy_block(block, lookup) {
+        block.f();
+        outro_and_destroy_block(block, lookup);
+    }
+    function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                block.p(child_ctx, dirty);
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        return new_blocks;
+    }
+    function validate_each_keys(ctx, list, get_context, get_key) {
+        const keys = new Set();
+        for (let i = 0; i < list.length; i++) {
+            const key = get_key(get_context(ctx, list, i));
+            if (keys.has(key)) {
+                throw new Error('Cannot have duplicate keys in a keyed each');
+            }
+            keys.add(key);
+        }
+    }
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const prop_values = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, prop_values, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.29.7' }, detail)));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev('SvelteDOMSetData', { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function scale(node, { delay = 0, duration = 400, easing = cubicOut, start = 0, opacity = 0 }) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const sd = 1 - start;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (_t, u) => `
+			transform: ${transform} scale(${1 - (sd * u)});
+			opacity: ${target_opacity - (od * u)}
+		`
+        };
+    }
+
+    function flip(node, animation, params) {
+        const style = getComputedStyle(node);
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const scaleX = animation.from.width / node.clientWidth;
+        const scaleY = animation.from.height / node.clientHeight;
+        const dx = (animation.from.left - animation.to.left) / scaleX;
+        const dy = (animation.from.top - animation.to.top) / scaleY;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        const { delay = 0, duration = (d) => Math.sqrt(d) * 120, easing = cubicOut } = params;
+        return {
+            delay,
+            duration: is_function(duration) ? duration(d) : duration,
+            easing,
+            css: (_t, u) => `transform: ${transform} translate(${u * dx}px, ${u * dy}px);`
+        };
+    }
+
+    /* src/ExpertSearch.svelte generated by Svelte v3.29.7 */
+
+    const { Error: Error_1, console: console_1 } = globals;
+    const file = "src/ExpertSearch.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[10] = list[i];
+    	child_ctx[12] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[13] = list[i];
+    	return child_ctx;
+    }
+
+    // (78:2) {#each menuregions as menuregion}
+    function create_each_block_1(ctx) {
+    	let input;
+    	let input_value_value;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			input = element("input");
+    			attr_dev(input, "type", "button");
+    			attr_dev(input, "class", "regionbutton svelte-1ci4loc");
+    			input.value = input_value_value = /*menuregion*/ ctx[13];
+    			toggle_class(input, "selected", /*region*/ ctx[1] === /*menuregion*/ ctx[13]);
+    			add_location(input, file, 78, 4, 2086);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, input, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "click", prevent_default(/*handleClickRegion*/ ctx[4]), false, true, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*region, menuregions*/ 10) {
+    				toggle_class(input, "selected", /*region*/ ctx[1] === /*menuregion*/ ctx[13]);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(input);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(78:2) {#each menuregions as menuregion}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (87:26) {#if searchstring}
+    function create_if_block_1(ctx) {
+    	let t0_value = " " + "";
+    	let t0;
+    	let t1;
+    	let t2;
+
+    	const block = {
+    		c: function create() {
+    			t0 = text(t0_value);
+    			t1 = text("for ");
+    			t2 = text(/*searchstring*/ ctx[0]);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t2, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*searchstring*/ 1) set_data_dev(t2, /*searchstring*/ ctx[0]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(87:26) {#if searchstring}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (110:2) {:else}
+    function create_else_block(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			p.textContent = "Keine Experten gefunden";
+    			add_location(p, file, 110, 4, 3197);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(110:2) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (102:6) {#if expert.telnr}
+    function create_if_block(ctx) {
+    	let div;
+    	let t_value = /*expert*/ ctx[10].telnr + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t = text(t_value);
+    			attr_dev(div, "class", "telephone svelte-1ci4loc");
+    			add_location(div, file, 102, 8, 2870);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*experts*/ 4 && t_value !== (t_value = /*expert*/ ctx[10].telnr + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(102:6) {#if expert.telnr}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (96:2) {#each experts as expert, i (expert['@id'])}
+    function create_each_block(key_1, ctx) {
+    	let div6;
+    	let div0;
+    	let img;
+    	let img_src_value;
+    	let t0;
+    	let div1;
+    	let t1_value = /*expert*/ ctx[10].first_name + "";
+    	let t1;
+    	let t2;
+    	let t3_value = /*expert*/ ctx[10].last_name + "";
+    	let t3;
+    	let t4;
+    	let t5;
+    	let div2;
+    	let a;
+    	let t6_value = /*expert*/ ctx[10].email + "";
+    	let t6;
+    	let a_href_value;
+    	let t7;
+    	let div3;
+    	let t8_value = /*expert*/ ctx[10].competence + "";
+    	let t8;
+    	let t9;
+    	let div4;
+    	let t10_value = /*expert*/ ctx[10].organisation + "";
+    	let t10;
+    	let t11;
+    	let div5;
+    	let t12_value = /*expert*/ ctx[10].region + "";
+    	let t12;
+    	let t13;
+    	let div6_transition;
+    	let rect;
+    	let stop_animation = noop;
+    	let current;
+    	let if_block = /*expert*/ ctx[10].telnr && create_if_block(ctx);
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			div6 = element("div");
+    			div0 = element("div");
+    			img = element("img");
+    			t0 = space();
+    			div1 = element("div");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			t3 = text(t3_value);
+    			t4 = space();
+    			if (if_block) if_block.c();
+    			t5 = space();
+    			div2 = element("div");
+    			a = element("a");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			div3 = element("div");
+    			t8 = text(t8_value);
+    			t9 = space();
+    			div4 = element("div");
+    			t10 = text(t10_value);
+    			t11 = space();
+    			div5 = element("div");
+    			t12 = text(t12_value);
+    			t13 = space();
+    			if (img.src !== (img_src_value = /*expert*/ ctx[10].image?.download || "")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "Portrait");
+    			attr_dev(img, "class", "svelte-1ci4loc");
+    			add_location(img, file, 98, 8, 2691);
+    			attr_dev(div0, "class", "portrait svelte-1ci4loc");
+    			add_location(div0, file, 97, 6, 2660);
+    			attr_dev(div1, "class", "fullname svelte-1ci4loc");
+    			add_location(div1, file, 100, 6, 2770);
+    			attr_dev(a, "href", a_href_value = "mailto:" + /*expert*/ ctx[10].email);
+    			add_location(a, file, 104, 25, 2951);
+    			attr_dev(div2, "class", "email svelte-1ci4loc");
+    			add_location(div2, file, 104, 6, 2932);
+    			attr_dev(div3, "class", "competence svelte-1ci4loc");
+    			add_location(div3, file, 105, 6, 3014);
+    			attr_dev(div4, "class", "organisation svelte-1ci4loc");
+    			add_location(div4, file, 106, 6, 3070);
+    			attr_dev(div5, "class", "region svelte-1ci4loc");
+    			add_location(div5, file, 107, 6, 3130);
+    			attr_dev(div6, "class", "card svelte-1ci4loc");
+    			add_location(div6, file, 96, 4, 2585);
+    			this.first = div6;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, div0);
+    			append_dev(div0, img);
+    			append_dev(div6, t0);
+    			append_dev(div6, div1);
+    			append_dev(div1, t1);
+    			append_dev(div1, t2);
+    			append_dev(div1, t3);
+    			append_dev(div6, t4);
+    			if (if_block) if_block.m(div6, null);
+    			append_dev(div6, t5);
+    			append_dev(div6, div2);
+    			append_dev(div2, a);
+    			append_dev(a, t6);
+    			append_dev(div6, t7);
+    			append_dev(div6, div3);
+    			append_dev(div3, t8);
+    			append_dev(div6, t9);
+    			append_dev(div6, div4);
+    			append_dev(div4, t10);
+    			append_dev(div6, t11);
+    			append_dev(div6, div5);
+    			append_dev(div5, t12);
+    			append_dev(div6, t13);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (!current || dirty & /*experts*/ 4 && img.src !== (img_src_value = /*expert*/ ctx[10].image?.download || "")) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
+    			if ((!current || dirty & /*experts*/ 4) && t1_value !== (t1_value = /*expert*/ ctx[10].first_name + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*experts*/ 4) && t3_value !== (t3_value = /*expert*/ ctx[10].last_name + "")) set_data_dev(t3, t3_value);
+
+    			if (/*expert*/ ctx[10].telnr) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					if_block.m(div6, t5);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if ((!current || dirty & /*experts*/ 4) && t6_value !== (t6_value = /*expert*/ ctx[10].email + "")) set_data_dev(t6, t6_value);
+
+    			if (!current || dirty & /*experts*/ 4 && a_href_value !== (a_href_value = "mailto:" + /*expert*/ ctx[10].email)) {
+    				attr_dev(a, "href", a_href_value);
+    			}
+
+    			if ((!current || dirty & /*experts*/ 4) && t8_value !== (t8_value = /*expert*/ ctx[10].competence + "")) set_data_dev(t8, t8_value);
+    			if ((!current || dirty & /*experts*/ 4) && t10_value !== (t10_value = /*expert*/ ctx[10].organisation + "")) set_data_dev(t10, t10_value);
+    			if ((!current || dirty & /*experts*/ 4) && t12_value !== (t12_value = /*expert*/ ctx[10].region + "")) set_data_dev(t12, t12_value);
+    		},
+    		r: function measure() {
+    			rect = div6.getBoundingClientRect();
+    		},
+    		f: function fix() {
+    			fix_position(div6);
+    			stop_animation();
+    			add_transform(div6, rect);
+    		},
+    		a: function animate() {
+    			stop_animation();
+    			stop_animation = create_animation(div6, rect, flip, { duration: 300 });
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!div6_transition) div6_transition = create_bidirectional_transition(div6, scale, {}, true);
+    				div6_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!div6_transition) div6_transition = create_bidirectional_transition(div6, scale, {}, false);
+    			div6_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div6);
+    			if (if_block) if_block.d();
+    			if (detaching && div6_transition) div6_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(96:2) {#each experts as expert, i (expert['@id'])}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let h3;
+    	let t1;
+    	let form;
+    	let input;
+    	let t2;
+    	let br0;
+    	let t3;
+    	let t4;
+    	let p;
+    	let i;
+    	let t5;
+    	let t6;
+    	let t7;
+    	let t8;
+    	let div0;
+    	let t9;
+    	let t10;
+    	let br1;
+    	let t11;
+    	let t12;
+    	let br2;
+    	let t13;
+    	let div1;
+    	let each_blocks = [];
+    	let each1_lookup = new Map();
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value_1 = /*menuregions*/ ctx[3];
+    	validate_each_argument(each_value_1);
+    	let each_blocks_1 = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	let if_block = /*searchstring*/ ctx[0] && create_if_block_1(ctx);
+    	let each_value = /*experts*/ ctx[2];
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*expert*/ ctx[10]["@id"];
+    	validate_each_keys(ctx, each_value, get_each_context, get_key);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
+
+    	let each1_else = null;
+
+    	if (!each_value.length) {
+    		each1_else = create_else_block(ctx);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			h3 = element("h3");
+    			h3.textContent = "Expertensuche";
+    			t1 = space();
+    			form = element("form");
+    			input = element("input");
+    			t2 = space();
+    			br0 = element("br");
+    			t3 = space();
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
+    			}
+
+    			t4 = space();
+    			p = element("p");
+    			i = element("i");
+    			t5 = text("Search");
+    			if (if_block) if_block.c();
+    			t6 = text(" in ");
+    			t7 = text(/*region*/ ctx[1]);
+    			t8 = space();
+    			div0 = element("div");
+    			t9 = text("searchstring: ");
+    			t10 = text(/*searchstring*/ ctx[0]);
+    			br1 = element("br");
+    			t11 = text("\n  region: ");
+    			t12 = text(/*region*/ ctx[1]);
+    			br2 = element("br");
+    			t13 = space();
+    			div1 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			if (each1_else) {
+    				each1_else.c();
+    			}
+
+    			attr_dev(h3, "class", "svelte-1ci4loc");
+    			add_location(h3, file, 71, 0, 1909);
+    			attr_dev(input, "class", "searchstring svelte-1ci4loc");
+    			attr_dev(input, "placeholder", "Suche");
+    			add_location(input, file, 73, 2, 1951);
+    			add_location(br0, file, 76, 2, 2041);
+    			attr_dev(form, "action", "");
+    			add_location(form, file, 72, 0, 1932);
+    			add_location(i, file, 86, 17, 2297);
+    			attr_dev(p, "class", "debug svelte-1ci4loc");
+    			add_location(p, file, 86, 0, 2280);
+    			add_location(br1, file, 89, 30, 2424);
+    			add_location(br2, file, 90, 18, 2447);
+    			attr_dev(div0, "class", "debug svelte-1ci4loc");
+    			add_location(div0, file, 88, 0, 2374);
+    			attr_dev(div1, "class", "cards svelte-1ci4loc");
+    			add_location(div1, file, 94, 0, 2514);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, form, anchor);
+    			append_dev(form, input);
+    			append_dev(form, t2);
+    			append_dev(form, br0);
+    			append_dev(form, t3);
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(form, null);
+    			}
+
+    			insert_dev(target, t4, anchor);
+    			insert_dev(target, p, anchor);
+    			append_dev(p, i);
+    			append_dev(i, t5);
+    			if (if_block) if_block.m(i, null);
+    			append_dev(i, t6);
+    			append_dev(i, t7);
+    			insert_dev(target, t8, anchor);
+    			insert_dev(target, div0, anchor);
+    			append_dev(div0, t9);
+    			append_dev(div0, t10);
+    			append_dev(div0, br1);
+    			append_dev(div0, t11);
+    			append_dev(div0, t12);
+    			append_dev(div0, br2);
+    			insert_dev(target, t13, anchor);
+    			insert_dev(target, div1, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div1, null);
+    			}
+
+    			if (each1_else) {
+    				each1_else.m(div1, null);
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "keyup", /*handleSearchstring*/ ctx[5], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*menuregions, region, handleClickRegion*/ 26) {
+    				each_value_1 = /*menuregions*/ ctx[3];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks_1[i]) {
+    						each_blocks_1[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_1[i] = create_each_block_1(child_ctx);
+    						each_blocks_1[i].c();
+    						each_blocks_1[i].m(form, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_1.length; i += 1) {
+    					each_blocks_1[i].d(1);
+    				}
+
+    				each_blocks_1.length = each_value_1.length;
+    			}
+
+    			if (/*searchstring*/ ctx[0]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					if_block.m(i, t6);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (!current || dirty & /*region*/ 2) set_data_dev(t7, /*region*/ ctx[1]);
+    			if (!current || dirty & /*searchstring*/ 1) set_data_dev(t10, /*searchstring*/ ctx[0]);
+    			if (!current || dirty & /*region*/ 2) set_data_dev(t12, /*region*/ ctx[1]);
+
+    			if (dirty & /*experts*/ 4) {
+    				const each_value = /*experts*/ ctx[2];
+    				validate_each_argument(each_value);
+    				group_outros();
+    				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
+    				validate_each_keys(ctx, each_value, get_each_context, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each1_lookup, div1, fix_and_outro_and_destroy_block, create_each_block, null, get_each_context);
+    				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].a();
+    				check_outros();
+
+    				if (each_value.length) {
+    					if (each1_else) {
+    						each1_else.d(1);
+    						each1_else = null;
+    					}
+    				} else if (!each1_else) {
+    					each1_else = create_else_block(ctx);
+    					each1_else.c();
+    					each1_else.m(div1, null);
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(form);
+    			destroy_each(each_blocks_1, detaching);
+    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(p);
+    			if (if_block) if_block.d();
+    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(t13);
+    			if (detaching) detach_dev(div1);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			if (each1_else) each1_else.d();
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("ExpertSearch", slots, []);
+    	let searchstring = "";
+    	let region = "Alle Regionen";
+
+    	// TODO menuregions according values in backend index
+    	let menuregions = [
+    		"Alle Regionen",
+    		"Zürich Stadt",
+    		"Zürich Oberland",
+    		"Zürich Unterland",
+    		"Albis",
+    		"Winterthur"
+    	];
+
+    	let apiURL = {"env":{"isProd":false,"API_URL":"http://localhost:8080/Plone/","PORTAL_TYPE":"dexterity.membrane.member"}}.env.API_URL;
+    	apiURL = apiURL + "@search?portal_type=" + {"env":{"isProd":false,"API_URL":"http://localhost:8080/Plone/","PORTAL_TYPE":"dexterity.membrane.member"}}.env.PORTAL_TYPE + "&fullobjects=1&sort_on=last_name&sort_order=ascending";
+    	let searchUrl = "";
+    	let experts = [];
+
+    	function setSearchUrl(region = "Alle Regionen", searchstring = "") {
+    		searchUrl = (region == "Alle Regionen"
+    		? apiURL
+    		: apiURL + "&region=" + encodeURI(region)) + (searchstring ? "&SearchableText=" + searchstring : "");
+    	}
+
+    	
+
+    	async function getExperts(url = apiURL) {
+    		fetch(url, {
+    			method: "GET",
+    			headers: {
+    				"Content-Type": "application/json",
+    				"Accept": "application/json"
+    			}
+    		}).then(response => {
+    			if (!response.ok) {
+    				throw new Error("Network response was not ok");
+    			}
+
+    			return response.json();
+    		}).then(data => {
+    			$$invalidate(2, experts = data?.items || []);
+
+    			$$invalidate(2, experts = experts.length > 0
+    			? experts.filter(exp => exp.is_expert)
+    			: []);
+
+    			console.log(experts);
+    			return experts;
+    		}).catch(error => {
+    			console.error("There has been a problem with your fetch operation:", error);
+    		});
+    	}
+
+    	
+
+    	onMount(() => {
+    		getExperts();
+    	});
+
+    	const handleClickRegion = event => {
+    		$$invalidate(1, region = event.target.value);
+    		setSearchUrl(region, searchstring);
+    		console.log("apiURL", apiURL);
+    		getExperts(searchUrl);
+    	};
+
+    	const handleSearchstring = event => {
+    		$$invalidate(0, searchstring = event.target.value + (event.target.value ? "*" : ""));
+    		setSearchUrl(region, searchstring);
+    		getExperts(searchUrl);
+    	};
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<ExpertSearch> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({
+    		onMount,
+    		scale,
+    		flip,
+    		searchstring,
+    		region,
+    		menuregions,
+    		apiURL,
+    		searchUrl,
+    		experts,
+    		setSearchUrl,
+    		getExperts,
+    		handleClickRegion,
+    		handleSearchstring
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("searchstring" in $$props) $$invalidate(0, searchstring = $$props.searchstring);
+    		if ("region" in $$props) $$invalidate(1, region = $$props.region);
+    		if ("menuregions" in $$props) $$invalidate(3, menuregions = $$props.menuregions);
+    		if ("apiURL" in $$props) apiURL = $$props.apiURL;
+    		if ("searchUrl" in $$props) searchUrl = $$props.searchUrl;
+    		if ("experts" in $$props) $$invalidate(2, experts = $$props.experts);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		searchstring,
+    		region,
+    		experts,
+    		menuregions,
+    		handleClickRegion,
+    		handleSearchstring
+    	];
+    }
+
+    class ExpertSearch extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "ExpertSearch",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.29.7 */
+
+    function create_fragment$1(ctx) {
+    	let expertsearch;
+    	let current;
+    	expertsearch = new ExpertSearch({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(expertsearch.$$.fragment);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(expertsearch, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(expertsearch.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(expertsearch.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(expertsearch, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("App", slots, []);
+    	let name = "my-svelte-app";
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ name, ExpertSearch });
+
+    	$$self.$inject_state = $$props => {
+    		if ("name" in $$props) name = $$props.name;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment$1.name
+    		});
+    	}
+    }
+
+    let targets = document.getElementsByClassName("my-svelte-app");
+
+    for(let i = 0;i < targets.length; i++){
+        let target = targets[i];
+        const app_instance = new App({
+        target: target,
+        props: {
+        }
+      });
+    }
+
+}());
 //# sourceMappingURL=bundle.js.map

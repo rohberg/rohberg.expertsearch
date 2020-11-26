@@ -42,6 +42,7 @@
     })
     .then(data => {
       experts = data?.items || [];
+      experts = experts.length > 0 ? experts.filter(exp => exp.is_expert) : [];
       console.log(experts);
       return experts;
     })
