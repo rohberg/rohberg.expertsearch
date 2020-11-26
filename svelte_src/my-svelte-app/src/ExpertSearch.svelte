@@ -136,6 +136,7 @@
     background-color: white;
     border: 2px solid #007cbf;
     border-radius: 8px;
+    outline: none;
   }
   .regionbutton.selected {
     border-color: #00507a;
