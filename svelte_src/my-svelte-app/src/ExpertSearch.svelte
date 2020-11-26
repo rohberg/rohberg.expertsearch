@@ -103,9 +103,15 @@
         <div class="telephone">{expert.telnr}</div>
       {/if}
       <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
-      <div class="competence">{expert.competence}</div>
-      <div class="organisation">{expert.organisation}</div>
-      <div class="region">{expert.region}</div>
+      {#if expert.competence}
+        <div class="competence">{expert.competence}</div>  
+      {/if}
+      {#if expert.organisation}
+        <div class="organisation">{expert.organisation}</div>  
+      {/if}
+      {#if expert.region}
+        <div class="region">{expert.region}</div>
+      {/if}
     </div>
   {:else}
     <p>Keine Experten gefunden</p>

@@ -29,15 +29,15 @@ class IExpert(model.Schema):
 
     competence = schema.TextLine(
         title=_(u'Competence'),
-        required=True,
+        required=False,
     )
     region = schema.TextLine(
         title=_(u'Region'),
-        required=True
+        required=False
     )
     organisation = schema.TextLine(
         title=_(u'Organisation'),
-        required=True,
+        required=False,
     )
     widget(is_expert=RadioFieldWidget)
     is_expert = schema.Bool(
