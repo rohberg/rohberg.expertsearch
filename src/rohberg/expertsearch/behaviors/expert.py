@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+
 from collective import dexteritytextindexer
 from rohberg.expertsearch import _
 from plone import schema
+from plone.autoform.directives import order_after
 from plone.autoform.directives import widget
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -27,6 +29,7 @@ class IExpert(model.Schema):
     # dexteritytextindexer.searchable('region') # extra index for filtering by region
     dexteritytextindexer.searchable('organisation')
 
+    # order_after(competence='IMember.last_name')
     competence = schema.TextLine(
         title=_(u'Competence'),
         required=False,
