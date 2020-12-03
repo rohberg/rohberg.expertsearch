@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-12-03 20:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: rohberg.expertsearch\n"
+
+#: ../behaviors/expert.py:34
+msgid "Competence"
+msgstr "Kompetenz"
+
+#: ../configure.zcml:27
+msgid "Installs the rohberg.expertsearch add-on."
+msgstr ""
+
+#: ../behaviors/expert.py:47
+msgid "Ist Experte. In Expertensuche aufnehmen."
+msgstr ""
+
+#: ../behaviors/expert.py:42
+msgid "Organisation"
+msgstr ""
+
+#: ../behaviors/expert.py:38
+msgid "Region"
+msgstr ""
+
+#: ../configure.zcml:36
+msgid "Uninstalls the rohberg.expertsearch add-on."
+msgstr ""
+
+#: ../configure.zcml:27
+msgid "rohberg.expertsearch"
+msgstr ""
+
+#: ../configure.zcml:36
+msgid "rohberg.expertsearch (uninstall)"
+msgstr ""
