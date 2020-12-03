@@ -69,7 +69,6 @@
 </script>
 
 
-<h3>Expertensuche</h3>
 <form action="">
   <input class="searchstring" placeholder="Suche"
     on:keyup={handleSearchstring}
@@ -120,11 +119,11 @@
 
 
 <style>
-  h3 {
+  /* h3 {
     text-transform: uppercase;
     font-size: 3em;
     font-weight: 100;
-  }
+  } */
   .searchstring,
   .searchstring:focus {
     border: none;
