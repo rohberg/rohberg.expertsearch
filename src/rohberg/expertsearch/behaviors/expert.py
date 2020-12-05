@@ -29,7 +29,6 @@ class IExpert(model.Schema):
     # dexteritytextindexer.searchable('region') # extra index for filtering by region
     dexteritytextindexer.searchable('organisation')
 
-    # order_after(competence='IMember.last_name')
     competence = schema.TextLine(
         title=_(u'Competence'),
         required=False,
@@ -48,6 +47,11 @@ class IExpert(model.Schema):
         default=True,
         required=False,
     )
+
+    order_after(is_expert='last_name')
+    order_after(organisation='last_name')
+    order_after(region='last_name')
+    order_after(competence='last_name')
 
 
 @implementer(IExpert)
