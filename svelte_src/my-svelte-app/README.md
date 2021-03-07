@@ -1,7 +1,3 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
 # Your svelte app "my-svelte-app", integrated in Plone CMS
 
 This is a project template for [Svelte](https://svelte.dev) apps. It is based on https://github.com/sveltejs/template.
