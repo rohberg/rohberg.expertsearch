@@ -22,7 +22,7 @@ Compile Svelte code:
 
     cd rohberg.expertsearch/svelte_src/my-svelte-app
     npm install
-    npm run build -- --environment API_URL:https://devplone.zhkath.ch/relaunch-fachstellen/spitalseelsorge/,PORTAL_TYPE:zhkathauthor
+    npm run build -- --environment API_URL:https://www.mydomain.ch/,PORTAL_TYPE:expert
 
 with API_URL and PORTAL_TYPE according to your installation.
 
@@ -30,9 +30,8 @@ Paste `<div class="my-svelte-app expertsearch" />` in one of your pages to see t
 
 ## Contribute
 
-- Issue Tracker: https://github.com/collective/rohberg.expertsearch/issues
-- Source Code: https://github.com/collective/rohberg.expertsearch
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/rohberg/rohberg.expertsearch/issues
+- Source Code: https://github.com/rohberg/rohberg.expertsearch
 
 
 ## License
