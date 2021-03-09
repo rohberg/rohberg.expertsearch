@@ -126,6 +126,9 @@
           {#if expert.organisation}
             <div class="organisation">{expert.organisation}</div>
           {/if}
+          {#if expert.region}
+            <div class="region">{expert.region}</div>
+          {/if}
           {#if expert.competence}
             <div class="competence">{expert.competence}</div>
           {/if}
