@@ -103,11 +103,13 @@
     <div class="card" transition:scale animate:flip={{ duration: 300 }}>  
       <div class="cardinner">
         <div class="cardbgbox"></div>
-        <a class="cardimagebox" href={expert['@id']}>
-          <div class="portrait">
-            <img src="{expert.image?.download || ''}" alt="Portrait" />
-          </div>
-        </a>
+        {#if expert.image}
+          <a class="cardimagebox" href={expert['@id']}>
+            <div class="portrait">
+              <img src="{expert.image?.download || ''}" alt="Portrait" />
+            </div>
+          </a>
+        {/if}        
         <div class="cardtextbox">
           <a href={expert['@id']}>
             <div class="fullname">{expert.first_name} {expert.last_name}</div>
