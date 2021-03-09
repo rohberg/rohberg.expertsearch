@@ -2,11 +2,10 @@
   import { onMount } from "svelte";
   import { scale } from "svelte/transition";
   import { flip } from "svelte/animate";
+  import { SyncLoader } from 'svelte-loading-spinners'
 
-  let searchstring = '';
-  let region = 'Alle Regionen';
   // TODO menuregions according values in backend index
-  let menuregions = [
+  const menuregions = [
     'Alle Regionen',
     'Zürich Stadt',
     'Zürich Oberland',
@@ -14,19 +13,24 @@
     'Albis',
     'Winterthur',
   ]
-  
-  let apiURL = __myapp.env.API_URL;
-  apiURL = apiURL + '@search?portal_type=' + __myapp.env.PORTAL_TYPE + '&fullobjects=1&sort_on=last_name&sort_order=ascending';
 
-  let searchUrl = ''
+  const apiUrl = __myapp.env.API_URL + '@search?portal_type=' + __myapp.env.PORTAL_TYPE + '&fullobjects=1&sort_on=last_name&sort_order=ascending&b_size=60';
+
+  // state
+  let searchstring = '';
+  let region = 'Alle Regionen';
+  let searchUrl = apiUrl;
+
   let experts = [];
+  let isLoading = false;
 
   function setSearchUrl(region='Alle Regionen', searchstring='') {
-    searchUrl = ((region == 'Alle Regionen') ? apiURL : apiURL + '&region=' + encodeURI(region))
+    searchUrl = ((region == 'Alle Regionen') ? apiUrl : apiUrl + '&region=' + encodeURI(region))
       + (searchstring ? ('&SearchableText=' + searchstring) : '');
   };
 
-  async function getExperts(url=apiURL) {
+  async function getExperts(url=searchUrl) {
+    isLoading = true;
     fetch(url, {
       method: "GET",
       headers: {
@@ -43,12 +47,15 @@
     .then(data => {
       experts = data?.items || [];
       experts = experts.length > 0 ? experts.filter(exp => exp.is_expert) : [];
-      console.log(experts);
+      console.log('** Experts');
+      console.log(searchUrl);
+      console.log('experts', experts);
       return experts;
     })
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
-    });
+    })
+    .finally(() => isLoading=false);
   };
 
   onMount(() => {
@@ -58,7 +65,7 @@
   const handleClickRegion = (event) => {
     region = event.target.value;
     setSearchUrl(region, searchstring);
-    console.log("apiURL", apiURL);
+    console.log("searchUrl", searchUrl);
     getExperts(searchUrl);
   }
   const handleSearchstring = (event) => {
@@ -94,31 +101,45 @@
 <div class="cards">
   {#each experts as expert, i (expert['@id'])}
     <div class="card" transition:scale animate:flip={{ duration: 300 }}>
-      <div class="portrait">
-        <img src="{expert.image?.download || ''}" alt="Portrait" />
-      </div>
-      <div class="fullname">{expert.first_name} {expert.last_name}</div>
+      <a href={expert['@id']}>
+        <div class="portrait">
+          <img src="{expert.image?.download || ''}" alt="Portrait" />
+        </div>
+        <div class="fullname">{expert.first_name} {expert.last_name}</div>
+      </a>
       {#if expert.telnr}
         <div class="telephone">{expert.telnr}</div>
       {/if}
       <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
       {#if expert.competence}
-        <div class="competence">{expert.competence}</div>  
+        <div class="competence">{expert.competence}</div>
       {/if}
       {#if expert.organisation}
-        <div class="organisation">{expert.organisation}</div>  
+        <div class="organisation">{expert.organisation}</div>
       {/if}
       {#if expert.region}
         <div class="region">{expert.region}</div>
       {/if}
     </div>
   {:else}
-    <p>Keine Experten gefunden</p>
+    {#if !isLoading}
+      <p>Keine Experten gefunden</p>
+    {/if}
   {/each}
+  {#if isLoading}
+    <div class="spinner">
+      <SyncLoader size="30" color="#007cbf" unit="px" duration="2s"></SyncLoader>
+    </div>
+  {/if}
 </div>
 
 
 <style>
+  .spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   /* h3 {
     text-transform: uppercase;
     font-size: 3em;
@@ -157,7 +178,7 @@
     /* width: 20rem;
     min-width: 10rem;    
     height: 10rem; */
-    width: 20em;
+    width: 45%;
     min-height: 10em;
     background: white;
     margin: 0 1rem 1rem 0;
