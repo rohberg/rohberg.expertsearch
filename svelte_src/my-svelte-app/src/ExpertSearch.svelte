@@ -100,26 +100,41 @@
 
 <div class="cards">
   {#each experts as expert, i (expert['@id'])}
-    <div class="card" transition:scale animate:flip={{ duration: 300 }}>
-      <a href={expert['@id']}>
-        <div class="portrait">
-          <img src="{expert.image?.download || ''}" alt="Portrait" />
+    <div class="card" transition:scale animate:flip={{ duration: 300 }}>  
+      <div class="cardinner">
+        <div class="cardbgbox"></div>
+        <a class="cardimagebox" href={expert['@id']}>
+          <div class="portrait">
+            <img src="{expert.image?.download || ''}" alt="Portrait" />
+          </div>
+        </a>
+        <div class="cardtextbox">
+          <a href={expert['@id']}>
+            <div class="fullname">{expert.first_name} {expert.last_name}</div>
+          </a>
+          {#if expert.telnr}
+            <div class="telephone">{expert.telnr}</div>
+          {/if}
+          {#if expert.email}
+            <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
+          {/if}
+          {#if expert.website}
+            <div class="website">{expert.website}</div>
+          {/if}
         </div>
-        <div class="fullname">{expert.first_name} {expert.last_name}</div>
-      </a>
-      {#if expert.telnr}
-        <div class="telephone">{expert.telnr}</div>
-      {/if}
-      <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
-      {#if expert.competence}
-        <div class="competence">{expert.competence}</div>
-      {/if}
-      {#if expert.organisation}
-        <div class="organisation">{expert.organisation}</div>
-      {/if}
-      {#if expert.region}
-        <div class="region">{expert.region}</div>
-      {/if}
+        <div class="cardlabel">
+          {#if expert.organisation}
+            <div class="organisation">{expert.organisation}</div>
+          {/if}
+          {#if expert.competence}
+            <div class="competence">{expert.competence}</div>
+          {/if}
+        </div>
+
+
+
+
+      </div>
     </div>
   {:else}
     {#if !isLoading}
