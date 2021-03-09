@@ -106,7 +106,7 @@
         {#if expert.image}
           <a class="cardimagebox" href={expert['@id']}>
             <div class="portrait">
-              <img src="{expert.image?.download || ''}" alt="Portrait" />
+              <img src="{expert.image?.scales.small.download || ''}" alt="Portrait" />
             </div>
           </a>
         {/if}        
@@ -121,7 +121,9 @@
             <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
           {/if}
           {#if expert.website}
-            <div class="website">{expert.website}</div>
+            <div class="website">
+              <a href="{expert.website}">Website</a>
+            </div>
           {/if}
         </div>
         <div class="cardlabel">
@@ -214,7 +216,7 @@
   .competence,
   .organisation,
   .region {
-    font-size: 90%;
+    /* font-size: 90%; */
     margin-bottom: .1em;
   }
   .email {
