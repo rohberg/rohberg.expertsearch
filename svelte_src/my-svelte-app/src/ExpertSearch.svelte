@@ -98,7 +98,7 @@
   <!-- experts: <br>{JSON.stringify(experts)}<br> -->
 </div>
 
-<div class="expertsearch cards">
+<div class="cards">
   {#each experts as expert, i (expert['@id'])}
     <div class="card" transition:scale animate:flip={{ duration: 300 }}>  
       <div class="cardinner">

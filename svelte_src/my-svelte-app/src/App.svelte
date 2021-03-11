@@ -1,5 +1,5 @@
 <script>  
-  let name = "my-svelte-app";
+  let name = "rohberg-expertsearch-svelte-app";
 
   import ExpertSearch from './ExpertSearch.svelte';
 </script>

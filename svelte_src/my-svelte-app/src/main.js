@@ -1,6 +1,6 @@
 import App from './App.svelte';
 
-let targets = document.getElementsByClassName("my-svelte-app");
+let targets = document.getElementsByClassName("rohberg-expertsearch-svelte-app");
 
 for(let i = 0;i < targets.length; i++){
     let target = targets[i];

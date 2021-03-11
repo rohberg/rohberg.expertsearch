@@ -26,7 +26,7 @@ Compile Svelte code:
 
 with API_URL and PORTAL_TYPE according to your installation.
 
-Paste `<div class="my-svelte-app expertsearch" />` in one of your pages to see the expert search.
+Paste `<div class="rohberg-expertsearch-svelte-app" />` in one of your pages to see the expert search.
 
 ## Contribute
 
