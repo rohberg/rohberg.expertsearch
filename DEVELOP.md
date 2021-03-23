@@ -1,42 +1,7 @@
-Using the development buildout
-==============================
-
-Create a virtualenv in the package::
-
-    $ virtualenv --clear .
-
-Install requirements with pip::
-
-    $ ./bin/pip install -r requirements.txt
-
-Run buildout::
-
-    $ ./bin/buildout
-
-Start Plone in foreground:
-
-    $ ./bin/instance fg
 
 
-Running tests
--------------
+    cd rohberg.expertsearch/svelte_src/my-svelte-app
+    npm install
+    npm run dev -- --environment API_URL:https://www.mydomain.ch/,PORTAL_TYPE:expert
 
-    $ tox
-
-list all tox environments:
-
-    $ tox -l
-    py27-Plone43
-    py27-Plone51
-    py27-Plone52
-    py37-Plone52
-    build_instance
-    code-analysis
-    lint-py27
-    lint-py37
-    coverage-report
-
-run a specific tox env:
-
-    $ tox -e py37-Plone52
-
+with API_URL and PORTAL_TYPE according to your installation.
