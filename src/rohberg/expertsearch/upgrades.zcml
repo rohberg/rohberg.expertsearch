@@ -1,0 +1,17 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="rohberg.expertsearch">
+
+    <genericsetup:upgradeStep
+      title="Update region field"
+      description="change from list of text values to list of (key,value) pairs"
+      source="1000"
+      destination="1002"
+      handler="rohberg.expertsearch.upgrades.upgrade_region_field"
+      sortkey="1"
+      profile="rohberg.expertsearch:default"
+      />
+
+</configure>

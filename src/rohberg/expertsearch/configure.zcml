@@ -16,6 +16,7 @@
   <include package=".browser" />
 
   <include file="permissions.zcml" />
+  <include file="upgrades.zcml" />
 
   <genericsetup:registerProfile
       name="default"
@@ -54,5 +55,10 @@
   <adapter factory=".indexers.MembraneSearchableTextExtender"
         name="MembraneSearchableTextExtender"
         />
+
+
+  <utility
+      name="rohbergexpertsearch.region"
+      component="rohberg.expertsearch.vocabularies.RegionVocabularyFactory" />
 
 </configure>

@@ -9,6 +9,7 @@ from plone.autoform.directives import widget
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from z3c.form.browser.radio import RadioFieldWidget
 from zope.component import adapter
 from zope.interface import Interface
@@ -33,9 +34,11 @@ class IExpert(model.Schema):
         title=_(u'Competence'),
         required=False,
     )
-    region = schema.TextLine(
+    widget(region=CheckBoxFieldWidget)
+    region = schema.Set(
         title=_(u'Region'),
-        required=False
+        value_type=schema.Choice(vocabulary='rohbergexpertsearch.region'),
+        required=False,
     )
     organisation = schema.TextLine(
         title=_(u'Organisation'),

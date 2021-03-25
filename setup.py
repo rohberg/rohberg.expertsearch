@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='rohberg.expertsearch',
-    version='1.0a1',
+    version='1.0a2',
     description="Person Search for Membrane Plone User",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/

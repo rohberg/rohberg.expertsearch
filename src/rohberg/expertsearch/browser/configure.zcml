@@ -18,4 +18,15 @@
       directory="static"
       />
 
+  <browser:page
+      name="expertsearch-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ExpertsearchControlPanelView"
+      permission="cmf.ManagePortal"
+      />
+  <adapter
+      factory="rohberg.expertsearch.browser.controlpanel.ExpertsearchControlPanel"
+      name="expertsearch-controlpanel" />
+
+
 </configure>
