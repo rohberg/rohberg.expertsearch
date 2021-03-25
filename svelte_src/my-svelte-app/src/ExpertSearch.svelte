@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from "svelte";
   import { scale } from "svelte/transition";
   import { flip } from "svelte/animate";
   import { SyncLoader } from 'svelte-loading-spinners'
@@ -14,29 +13,42 @@
     'Winterthur',
   ]
 
-  const apiUrl = __myapp.env.API_URL + '@search?portal_type=' + __myapp.env.PORTAL_TYPE + '&fullobjects=1&sort_on=last_name&sort_order=ascending&b_size=60';
+  const apiUrl = __myapp.env.API_URL;
+  const searchApiUrl = apiUrl + '@search?portal_type=' + __myapp.env.PORTAL_TYPE + '&fullobjects=1&sort_on=last_name&sort_order=ascending&b_size=200';
 
-  // state
+  // state of component
   let searchstring = '';
   let region = 'Alle Regionen';
-  let searchUrl = apiUrl;
-
+  $: searchUrl = ((region == 'Alle Regionen') ? searchApiUrl : searchApiUrl + '&region=' + encodeURI(region))
+      + (searchstring ? ('&SearchableText=' + searchstring + '*') : '');
   let experts = [];
   let isLoading = false;
 
-  function setSearchUrl(region='Alle Regionen', searchstring='') {
-    searchUrl = ((region == 'Alle Regionen') ? apiUrl : apiUrl + '&region=' + encodeURI(region))
-      + (searchstring ? ('&SearchableText=' + searchstring) : '');
-  };
+  // $: console.log('searchstring', searchstring);
+  // $: console.log('region:', region);
+  // $: console.log('searchUrl:', searchUrl);
+  // $: console.log('experts:', experts);
 
-  async function getExperts(url=searchUrl) {
+  $: getExperts(searchstring, region);
+
+
+  async function getExperts(mysearchstring, myregion) {
     isLoading = true;
-    fetch(url, {
+
+    // trigger search from 3 letters on
+    // search also if empty searchstring
+    if (mysearchstring.length < 3 && mysearchstring.length > 0) {
+      return
+    }
+
+    fetch(searchUrl, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
-      }
+      },
+      mode: 'cors',
+      // cache: 'default',
     })
     .then(response => {
       if (!response.ok) {
@@ -45,11 +57,8 @@
       return response.json();
     })
     .then(data => {
-      experts = data?.items || [];
-      experts = experts.length > 0 ? experts.filter(exp => exp.is_expert) : [];
-      console.log('** Experts');
-      console.log(searchUrl);
-      console.log('experts', experts);
+      let items = data?.items || [];
+      experts = items.length > 0 ? items.filter(exp => exp.is_expert) : [];
       return experts;
     })
     .catch(error => {
@@ -58,28 +67,22 @@
     .finally(() => isLoading=false);
   };
 
-  onMount(() => {
-    getExperts()
-  })
-
   const handleClickRegion = (event) => {
     region = event.target.value;
-    setSearchUrl(region, searchstring);
-    console.log("searchUrl", searchUrl);
-    getExperts(searchUrl);
   }
-  const handleSearchstring = (event) => {
-    searchstring = event.target.value + (event.target.value ? '*':'');
-    setSearchUrl(region, searchstring);
-    getExperts(searchUrl);
+
+  const handleReset = (event) => {
+    searchstring = '';
   }
 </script>
 
 
-<form action="">
+<form on:submit|preventDefault >
   <input class="searchstring" placeholder="Suche"
-    on:keyup={handleSearchstring}
+    bind:value={searchstring}
     >
+  <a class={searchstring.length > 0 ? 'resetbutton' : 'hidden'} 
+    on:click|preventDefault={handleReset} href=".">&#10005;</a>
   <br>
   {#each menuregions as menuregion}
     <input 
@@ -90,9 +93,9 @@
       value={menuregion}>
   {/each}
 </form>
-<p class="debug"><i>Search{#if searchstring}{' '}for {searchstring}{/if} in {region}</i></p>
 
 <div class="debug">
+  Anzahl: {experts?.length || 0}<br>
   searchstring: {searchstring}<br>
   region: {region}<br>
   <!-- experts: <br>{JSON.stringify(experts)}<br> -->
@@ -137,10 +140,6 @@
             <div class="competence">{expert.competence}</div>
           {/if}
         </div>
-
-
-
-
       </div>
     </div>
   {:else}
@@ -157,6 +156,9 @@
 
 
 <style>
+  .hidden {
+    display: none;
+  }
   .spinner {
     width: 100%;
     display: flex;
