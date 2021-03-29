@@ -74,6 +74,13 @@
   const handleReset = (event) => {
     searchstring = '';
   }
+
+  const textTruncate = (string, length) => {
+    let trimmedString = string.length > length ? 
+                        string.substring(0, length - 3) + "..." : 
+                        string;
+    return trimmedString;
+  }
 </script>
 
 
@@ -137,7 +144,7 @@
             <div class="region">{expert.region}</div>
           {/if}
           {#if expert.competence}
-            <div class="competence">{expert.competence}</div>
+            <div class="competence">{textTruncate(expert.competence, 90)}</div>            
           {/if}
         </div>
       </div>
@@ -219,7 +226,7 @@
   .organisation,
   .region {
     /* font-size: 90%; */
-    margin-bottom: .1em;
+    margin-bottom: .4em;
   }
   .email {
     margin-bottom: .6em;
