@@ -24,6 +24,8 @@
   let experts = [];
   let isLoading = false;
 
+  let searchstringRef;
+
   // $: console.log('searchstring', searchstring);
   // $: console.log('region:', region);
   // $: console.log('searchUrl:', searchUrl);
@@ -73,6 +75,7 @@
 
   const handleReset = (event) => {
     searchstring = '';
+    searchstringRef.focus();
   }
 
   const textTruncate = (string, length) => {
@@ -86,6 +89,7 @@
 
 <form on:submit|preventDefault >
   <input class="searchstring" placeholder="Suche"
+    bind:this={searchstringRef}
     bind:value={searchstring}
     >
   <a class={searchstring.length > 0 ? 'resetbutton' : 'hidden'} 
