@@ -131,9 +131,11 @@
           {#if expert.telnr}
             <div class="telephone">{expert.telnr}</div>
           {/if}
-          {#if expert.email}
+          {#if expert.alternativeEmail}
+            <div class="email"><a href="mailto:{expert.alternativeEmail}">{expert.alternativeEmail}</a></div>
+          {:else if expert.email}
             <div class="email"><a href="mailto:{expert.email}">{expert.email}</a></div>
-          {/if}
+          {/if}         
           {#if expert.website}
             <div class="website">
               <a href="{expert.website}">Website</a>
