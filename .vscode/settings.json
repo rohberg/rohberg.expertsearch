@@ -17,6 +17,6 @@
     ],
     "python.jediEnabled": false,
     "python.languageServer": "Microsoft",
-    "python.pythonPath": "/Users/ksuess/Plone52/Svelte/rohberg.expertsearch/bin/python",
+    "python.pythonPath": "/Users/katjasuss/.pyenv/shims/python",
     "vsintellicode.python.completionsEnabled": true
 }
